@@ -38,7 +38,7 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
+ENV PORT=3000
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -46,5 +46,3 @@ ENV PORT 3000
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 CMD ["node", "server.js"]
-
-# entre 50 a 150 MB

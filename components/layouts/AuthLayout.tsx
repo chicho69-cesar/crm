@@ -10,6 +10,12 @@ export default function AuthLayout({ children, title }: Props) {
     <>
       <Head>
         <title>{`CRM | ${title}`}</title>
+
+        <link
+          rel='icon'
+          type='image/svg+xml'
+          href='/favicon.svg'
+        /> 
       </Head>
 
       {children}

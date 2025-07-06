@@ -15,13 +15,18 @@ export default function MainLayout({ title, pageDescription, children, imageFull
         <title>{`CRM | ${title}`}</title>
 
         <meta name='description' content={pageDescription} />
-
         <meta name='og:title' content={title} />
         <meta name='og:description' content={pageDescription} />
 
         {imageFullUrl && (
           <meta name='og:image' content={imageFullUrl} />
         )}
+
+        <link
+          rel='icon'
+          type='image/svg+xml'
+          href='/favicon.svg'
+        /> 
       </Head>
 
       <div className='flex w-full min-h-screen justify-between items-start gap-4'>

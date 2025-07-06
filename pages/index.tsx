@@ -18,7 +18,7 @@ export default function HomePage({ user, token }: Props) {
   login(user, token)
 
   return (
-    <MainLayout title='Home' pageDescription='CRM clients for company administration'>
+    <MainLayout title='Clients' pageDescription='CRM clients for company administration'>
       <h1 className='text-3xl mt-4 mb-2 text-slate-900 first-letter:text-4xl'>
         Clientes
       </h1>
