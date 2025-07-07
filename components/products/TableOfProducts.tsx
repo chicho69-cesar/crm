@@ -43,7 +43,7 @@ export default function TableOfProducts() {
 
   return (
     <table className='w-full mt-6 bg-white'>
-      <thead className='bg-slate-900 text-center'>
+      <thead className='bg-slate-900 text-left'>
         <tr className='border-[0.5px] border-slate-900'>
           <th className='font-medium text-lg p-1 text-white'>
             Nombre
@@ -65,8 +65,8 @@ export default function TableOfProducts() {
 
       <tbody>
         {data && (data.getProducts as Product[])?.map((product) => (
-          <tr key={product.id} className='border-[0.5px] text-center'>
-            <td className='p-1 text-left'>
+          <tr key={product.id} className='border-[0.5px] text-left'>
+            <td className='p-1'>
               {product.name}
             </td>
 
@@ -78,7 +78,7 @@ export default function TableOfProducts() {
               {priceFormatter.format(product.price)}
             </td>
 
-            <td className='p-1 py-2 flex gap-2 justify-center'>
+            <td className='p-1 py-2 flex gap-2 justify-start'>
               <Button size='sm' bgColor='bg-red-700' onClick={() => handleDelete(product.id)}>
                 Eliminar
               </Button>

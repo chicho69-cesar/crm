@@ -1,15 +1,15 @@
+import { ApolloError } from '@apollo/client'
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
-import { ApolloError } from '@apollo/client'
 
 import { MainLayout } from '@/components/layouts'
+import { InputWrapper, SubmitError } from '@/components/ui'
+import { newProduct } from '@/graphql/services/products.mutations'
 import { getUser } from '@/graphql/services/users.queries'
 import useAuthActions from '@/hooks/use-auth-actions'
+import useForm from '@/hooks/use-form'
 import { User } from '@/interfaces'
 import { validateToken } from '@/utils'
-import useForm from '@/hooks/use-form'
-import { newProduct } from '@/graphql/services/products.mutations'
-import { InputWrapper, SubmitError } from '@/components/ui'
 
 interface Props {
   user: User
@@ -55,7 +55,7 @@ export default function NewProductPage({ token, user }: Props) {
 
   return (
     <MainLayout title='New Product' pageDescription='CRM clients for company administration'>
-      <h1 className='text-3xl text-slate-900 first-letter:text-4xl'>
+      <h1 className='text-3xl text-center text-slate-900 first-letter:text-4xl'>
         Nuevo producto
       </h1>
 
@@ -100,12 +100,22 @@ export default function NewProductPage({ token, user }: Props) {
           />
         </InputWrapper>
 
-        <button
-          className='mt-4 w-full bg-slate-900 py-2 px-4 font-bold text-lg text-center text-white rounded-md shadow-lg transition hover:scale-95'
-          type='submit'
-        >
-          Registrar producto
-        </button>
+        <div className='flex justify-center items-center gap-4'>
+          <button
+            className='mt-4 w-full bg-slate-300 py-2 px-4 font-bold text-lg text-center text-slate-900 rounded-md shadow-lg transition hover:scale-95'
+            type='button'
+            onClick={() => router.push('/products')}
+          >
+            Cancelar
+          </button>
+
+          <button
+            className='mt-4 w-full bg-slate-900 py-2 px-4 font-bold text-lg text-center text-white rounded-md shadow-lg transition hover:scale-95'
+            type='submit'
+          >
+            Registrar producto
+          </button>
+        </div>
       </form>
     </MainLayout>
   )

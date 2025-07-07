@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client'
 import Swal from 'sweetalert2'
 
-import { Button, LinkButton } from '../ui'
 import { GET_CLIENTS_SELLER } from '@/graphql/client'
+import { deleteClient } from '@/graphql/services/clients.mutations'
 import { useAppSelector } from '@/hooks/store'
 import { Client } from '@/interfaces'
-import { deleteClient } from '@/graphql/services/clients.mutations'
+import { Button, LinkButton } from '../ui'
 
 export default function TableOfUser() {
   const { token } = useAppSelector((state) => state.auth)
@@ -50,7 +50,7 @@ export default function TableOfUser() {
 
   return (
     <table className='w-full mt-6 bg-white'>
-      <thead className='bg-slate-900 text-center'>
+      <thead className='bg-slate-900 text-left'>
         <tr className='border-[0.5px] border-slate-900'>
           <th className='font-medium text-lg p-1 text-white'>
             Nombre
@@ -85,7 +85,7 @@ export default function TableOfUser() {
               {client.email}
             </td>
 
-            <td className='p-1 py-2 flex gap-2 justify-center'>
+            <td className='p-1 py-2 flex gap-2 justify-start'>
               <Button size='sm' bgColor='bg-red-700' onClick={() => handleDelete(client.id)}>
                 Eliminar
               </Button>

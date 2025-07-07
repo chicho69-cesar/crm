@@ -1,10 +1,10 @@
 import { useQuery } from '@apollo/client'
 import Swal from 'sweetalert2'
 
-import { Button, LinkButton } from '../ui'
 import { GET_USERS } from '@/graphql/client'
-import { User } from '@/interfaces'
 import { deleteUser } from '@/graphql/services/users.mutations'
+import { User } from '@/interfaces'
+import { Button, LinkButton } from '../ui'
 
 export default function TableOfSellers() {
   const { data } = useQuery(GET_USERS)
@@ -42,7 +42,7 @@ export default function TableOfSellers() {
 
   return (
     <table className='w-full mt-6 bg-white'>
-      <thead className='bg-slate-900 text-center'>
+      <thead className='bg-slate-900 text-left'>
         <tr className='border-[0.5px] border-slate-900'>
           <th className='font-medium text-lg p-1 text-white'>
             Nombre
@@ -77,7 +77,7 @@ export default function TableOfSellers() {
               {user.email}
             </td>
 
-            <td className='p-1 py-2 flex gap-2 justify-center'>
+            <td className='p-1 py-2 flex gap-2 justify-start'>
               <Button size='sm' bgColor='bg-red-700' onClick={() => handleDelete(user.id)}>
                 Eliminar
               </Button>

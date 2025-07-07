@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react'
-import { GetServerSideProps } from 'next'
 import { ApolloError, useQuery } from '@apollo/client'
+import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 
 import { MainLayout } from '@/components/layouts'
+import { SubmitError } from '@/components/ui'
 import { GET_CLIENTS_SELLER, GET_PRODUCTS } from '@/graphql/client'
+import { newOrder } from '@/graphql/services/orders.mutations'
 import { getUser } from '@/graphql/services/users.queries'
 import useAuthActions from '@/hooks/use-auth-actions'
 import { Client, OrderData, Product, User } from '@/interfaces'
 import { validateToken } from '@/utils'
 import { priceFormatter } from '@/utils/formatters'
-import { SubmitError } from '@/components/ui'
-import { newOrder } from '@/graphql/services/orders.mutations'
 
 interface Props {
   user: User
@@ -126,7 +126,7 @@ export default function NewOrderPage({ token, user }: Props) {
 
   return (
     <MainLayout title='New Order' pageDescription='CRM clients for company administration'>
-      <h1 className='text-3xl text-slate-900 first-letter:text-4xl'>
+      <h1 className='text-3xl text-slate-900 first-letter:text-4xl text-center'>
         Crear nuevo pedido
       </h1>
 
@@ -251,12 +251,22 @@ export default function NewOrderPage({ token, user }: Props) {
           </p>
         </div>
 
-        <button
-          className='mt-4 w-full bg-slate-900 py-2 px-4 font-bold text-lg text-center text-white rounded-md shadow-lg transition hover:scale-95'
-          type='submit'
-        >
-          Registrar pedido
-        </button>
+        <div className='flex justify-center items-center gap-4'>
+          <button
+            className='mt-4 w-full bg-slate-300 py-2 px-4 font-bold text-lg text-center text-slate-900 rounded-md shadow-lg transition hover:scale-95'
+            type='button'
+            onClick={() => router.push('/orders')}
+          >
+            Cancelar
+          </button>
+
+          <button
+            className='mt-4 w-full bg-slate-900 py-2 px-4 font-bold text-lg text-center text-white rounded-md shadow-lg transition hover:scale-95'
+            type='submit'
+          >
+            Registrar pedido
+          </button>
+        </div>
       </form>
     </MainLayout>
   )
