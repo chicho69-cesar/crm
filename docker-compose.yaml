@@ -6,3 +6,9 @@ services:
       - 27017:27017
     volumes:
       - ./mongo:/data/db
+    networks:
+      - crm_network
+
+networks:
+  crm_network:
+    driver: bridge
